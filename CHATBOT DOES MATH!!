@@ -1,0 +1,33 @@
+import operator
+
+# Define a dictionary to map user input to operator functions
+OPERATORS = {
+    'addition': operator.add,
+    'subtraction': operator.sub,
+    'multiplication': operator.mul,
+    'division': operator.truediv
+}
+
+def calculate():
+    print("Hi, I'm a simple chatbot that can perform basic mathematical operations.")
+    while True:
+        try:
+            num1 = float(input("Enter the first number: "))
+            num2 = float(input("Enter the second number: "))
+            op = input("Enter the operation you'd like to perform (e.g., addition, subtraction, multiplication, division): ")
+            if op not in OPERATORS:
+                print("Invalid operator. Please choose from addition, subtraction, multiplication, or division.")
+                continue
+            result = OPERATORS[op](num1, num2)
+            print(f"The result of {num1} {op} {num2} is {result}")
+            more_ops = input("Would you like to perform more operations? (yes/no) ")
+            if more_ops.lower() == 'yes':
+                continue
+            else:
+                print("Goodbye!")
+                break
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+
+# Call the calculate function to start the chatbot
+calculate()
